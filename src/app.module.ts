@@ -10,7 +10,7 @@ import { PaymentModule } from './payment/payment.module';
 import { AuthenticationGuard } from './user/auth/authentication.guard';
 import { UserModule } from './user/user.module';
 
-const mongoURL = 'mongodb://localhost:27017/xrawler'
+const mongoURL = 'mongodb+srv://brian:dbpass@cluster0.lpfc8dq.mongodb.net/?retryWrites=true&w=majority'
 
 @Module({
   imports: [MongooseModule.forRoot(mongoURL), UserModule, FacilityModule, BookingsModule, FilesModule, PaymentModule],
