@@ -6,7 +6,7 @@ export enum TransactionType {
   CustomerBuyGoodsOnline = 'CustomerBuyGoodsOnline'
 }
 
-const baseUrl = 'https://moneris.eastus.cloudapp.azure.com:8080/'
+const baseUrl = 'https://xrawler-booking.onrender.com/'
 // const baseUrl = 'http://localhost:5000'
 
 export const mpesaSTKPushUrl = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
