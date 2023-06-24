@@ -6,9 +6,6 @@ import { File, fileSchema } from 'src/models/file.model';
 
 @Module({
   imports: [
-    // MulterModule.register({
-    //   storage: storage,
-    // }),
     MongooseModule.forFeature([{name: File.name, schema: fileSchema}])
   ],
   controllers: [FileController],

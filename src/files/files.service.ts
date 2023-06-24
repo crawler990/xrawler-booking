@@ -1,19 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import * as mongoose from 'mongoose';
-import * as MongoGridFS from 'mongo-gridfs';
 import { Response } from 'express';
 import { InjectModel } from '@nestjs/mongoose';
 import { File } from 'src/models/file.model';
 import { Model } from 'mongoose';
-import * as fs from 'fs';
-
-async function init() {
-  let mongoConnection = await mongoose.connect('mongodb://localhost:27017/Files');
-  let gridFS = new MongoGridFS.MongoGridFS(mongoConnection.connection.db, 'files');
-  return gridFS;
-}
-
-const gridFS = init();
 
 @Injectable()
 export class FileService {
@@ -41,7 +30,4 @@ export class FileService {
     }
   }
 
-  async deleteFile(id) {
-    return await (await gridFS).delete(id);
-  }
 }

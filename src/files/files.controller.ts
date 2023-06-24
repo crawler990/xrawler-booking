@@ -2,7 +2,6 @@ import { Body, Controller, Delete, Get, Param, Post, Put, Request, Res, Uploaded
 import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { Response } from 'express';
 import { FileService } from './files.service';
-import { upload } from './gridfs.storages';
 
 @Controller()
 export class FileController {
@@ -17,6 +16,7 @@ export class FileController {
     await this.fileservice.uploadFile(file, body.parentId)
     // return `File uploaded successfuly : ${file.originalname}`;
   }
+
 
   @Post('uploadmultiple')
   @UseInterceptors(FilesInterceptor('files'))
@@ -33,17 +33,4 @@ export class FileController {
     return await this.fileservice.getFiles(parentId, res);
   }
 
-  @Put('updatefile/:id')
-  @UseInterceptors(FileInterceptor('file'))
-  async updateFile(@Param('id') id, @UploadedFile() updatefile) {
-    await this.fileservice.deleteFile(id);
-    updatefile._id = id;
-    upload.single('file');
-    return updatefile;
-  }
-
-  @Delete('deletefile/:id')
-  deleteFile(@Param('id') id) {
-    return this.fileservice.deleteFile(id);
-  }
 }
