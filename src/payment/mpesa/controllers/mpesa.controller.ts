@@ -15,7 +15,7 @@ export class MPESAController {
 
   @Post('callback')
   async getCallBack(@Req() req: Request) {
-    console.log(req)
+    console.log('callback')
     console.log(req.body.Body.stkCallback);
     let update = req.body.Body.stkCallback;
     await this.mpesaservice.updateTransaction(update);
