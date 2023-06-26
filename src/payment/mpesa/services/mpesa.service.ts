@@ -14,7 +14,7 @@ export class MPESAService {
     let result = await unirest('GET', mpesaAccessTokenUrl)
         .headers({ 'Authorization': `Basic ${auth}` })
         .send();
-    console.log(result);
+        
     return JSON.parse(result.raw_body);
   }
 
