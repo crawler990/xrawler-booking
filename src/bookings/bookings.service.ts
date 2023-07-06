@@ -21,7 +21,9 @@ export class BookingsService {
     }
 
     async getUserBookings(userId: ObjectId){
-        return await this.bookingModel.find({by: userId}).populate('by', 'username -_id').populate('facility', 'name -_id');
+        const bookings = await this.bookingModel.find({by: userId}).populate('by', 'username -_id').populate('facility', 'name -_id');
+        console.log(bookings)
+        return bookings
     }
 
     async getAllBookings(){

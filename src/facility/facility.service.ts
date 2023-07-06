@@ -22,7 +22,7 @@ export class FacilityService {
     }
 
     async getUserFacilities(userId: ObjectId){
-        return await this.facilityModel.find({owner: userId}).sort({createdAt: -1})
+        return await this.facilityModel.find({owner: userId}).sort({createdAt: -1}).populate('owner', 'username')
     }
 
     async getAllFacilities(){

@@ -53,4 +53,12 @@ export class UserService {
     }
   }
 
+  async getUserProfile(userId){
+    return await this.userModel.findById(userId);
+  }
+
+  async updateProfile(userId, update){
+    return await this.userModel.findByIdAndUpdate(userId, update, {new: true})
+  }
+
 }

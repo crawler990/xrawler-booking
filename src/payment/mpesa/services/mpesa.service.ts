@@ -35,7 +35,7 @@ export class MPESAService {
       PartyB: mpesaBusinessShortCode,
       PhoneNumber: data.phoneNumber,
       CallBackURL: callBackUrl,
-      AccountReference: data.accountReference ? data.accountReference : 'SIBASILTD',
+      AccountReference: data.accountReference ? data.accountReference : 'XRAWLER',
       TransactionDesc: data.transactionDescription ? data.transactionDescription : 'Payment of goods/services.',
     };
 

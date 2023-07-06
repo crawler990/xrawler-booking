@@ -10,6 +10,7 @@ export class BookingsController {
 
     @Post()
     async createBooking(@Body() booking : Booking, @GetUser()userId: ObjectId){
+        console.log('booking', booking)
         delete booking._id
         return await this.bookingsService.createBooking(booking, userId);
     }
@@ -34,7 +35,7 @@ export class BookingsController {
         return await this.bookingsService.getAllBookings();
     }
 
-    @Post(':id')
+    @Post('update/:id')
     async updateBooking(@Param('id') bookingId, @Body() update: Partial<Booking> ){
         return await this.bookingsService.updateBooking(bookingId, update);
     }

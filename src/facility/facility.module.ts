@@ -11,6 +11,7 @@ import { Facility, facilitySchema } from 'src/models/facility,model';
     ])
   ],
   controllers: [FacilityController],
-  providers: [FacilityService]
+  providers: [FacilityService],
+  exports: [FacilityService]
 })
 export class FacilityModule {}

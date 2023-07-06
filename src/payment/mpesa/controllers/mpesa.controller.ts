@@ -9,6 +9,7 @@ export class MPESAController {
 
   @Post('processrequest')
   async makePayment(@Body() body: DTOMPESA) {
+    console.log('hit')
     if(!body.phoneNumber || !body.amount) throw new HttpException('Please provide the phone number and amount to be processed', HttpStatus.BAD_REQUEST);
     return await this.mpesaservice.processRequest(body);
   }
