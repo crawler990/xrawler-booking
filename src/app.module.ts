@@ -9,11 +9,13 @@ import { FilesModule } from './files/files.module';
 import { PaymentModule } from './payment/payment.module';
 import { AuthenticationGuard } from './user/auth/authentication.guard';
 import { UserModule } from './user/user.module';
+import { ReportsModule } from './reports/reports.module';
 
-const mongoURL = 'mongodb+srv://brian:dbpassword@cluster0.lpfc8dq.mongodb.net/xrawler?retryWrites=true&w=majority'
+// const mongoURL = 'mongodb+srv://brian:dbpassword@cluster0.lpfc8dq.mongodb.net/xrawler?retryWrites=true&w=majority'
+const mongoURL = 'mongodb://localhost:27017/xrawler'
 
 @Module({
-  imports: [MongooseModule.forRoot(mongoURL), UserModule, FacilityModule, BookingsModule, FilesModule, PaymentModule],
+  imports: [MongooseModule.forRoot(mongoURL), UserModule, FacilityModule, BookingsModule, FilesModule, PaymentModule, ReportsModule],
   controllers: [AppController],
   providers: [AppService,
   {

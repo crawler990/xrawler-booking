@@ -4,16 +4,16 @@ import { User } from './user.model';
 
 @Schema({timestamps: true})
 export class Facility extends Document {
-  @Prop()
+  @Prop({required: true})
   name: string;
 
-  @Prop()
+  @Prop({required: true})
   capacity: number;
 
-  @Prop()
+  @Prop({required: true})
   type: string;
 
-  @Prop()
+  @Prop({required: true})
   cost: number;
 
   @Prop({default: 'KE'})

@@ -11,13 +11,12 @@ export class BookingsController {
     @Post()
     async createBooking(@Body() booking : Booking, @GetUser()userId: ObjectId){
         console.log('booking', booking)
-        delete booking._id
         return await this.bookingsService.createBooking(booking, userId);
     }
     
     @Get('user')
     async getUserBookings(@GetUser()userId: ObjectId){
-        return await this.bookingsService.getUserBookings(userId)
+        return await this.bookingsService.getUserBookings(userId);
     }
 
     @Get(':id')
