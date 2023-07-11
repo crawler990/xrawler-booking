@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import axios from 'axios';
 import { Model } from 'mongoose';
 import { DTOMPESA, MPESA, TransactionType, callBackUrl, consumerKey, consumerSecret, mpesaAccessTokenUrl, mpesaBusinessShortCode, mpesaQueueTimeOutUrl, mpesaResultUrl, mpesaReversalUrl, mpesaSTKPushUrl, mpesaTransactionStatusUrl, passKey, securityCredential } from '../../models/mpesa.model';
-import axios from 'axios';
 
 var unirest = require('unirest');
 
@@ -51,13 +51,13 @@ export class MPESAService {
       })
       .send(dataToSend);
 
-      axios.post(mpesaSTKPushUrl, dataToSend, {headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
-      } }).then((response) => {
-        console.log(response)
-      })
+      // axios.post(mpesaSTKPushUrl, dataToSend, {headers: {
+      //   Accept: 'application/json',
+      //   'Content-Type': 'application/json',
+      //   Authorization: `Bearer ${accessToken}`,
+      // } }).then((response) => {
+      //   console.log(response)
+      // }).catch(error => console.log(error))
 
       
     let resultObject = JSON.parse(result.raw_body);
