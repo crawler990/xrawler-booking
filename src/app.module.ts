@@ -13,7 +13,7 @@ import { ReportsModule } from './reports/reports.module';
 
 // const mongoURL = 'mongodb+srv://brian:dbpassword@cluster0.lpfc8dq.mongodb.net/xrawler?retryWrites=true&w=majority'
 // const mongoURL = 'mongodb://localhost:27017/xrawler'
-const mongoURL = 'mongodb://8.tcp.ngrok.io:14547/xrawler'
+const mongoURL = 'mongodb://2.tcp.ngrok.io:16154/xrawler'
 
 @Module({
   imports: [MongooseModule.forRoot(mongoURL), UserModule, FacilityModule, BookingsModule, FilesModule, PaymentModule, ReportsModule],
