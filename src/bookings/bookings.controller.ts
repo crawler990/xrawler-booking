@@ -10,7 +10,6 @@ export class BookingsController {
 
     @Post()
     async createBooking(@Body() booking : Booking, @GetUser()userId: ObjectId){
-        console.log('booking', booking)
         return await this.bookingsService.createBooking(booking, userId);
     }
     

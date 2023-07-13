@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import axios from 'axios';
 import { Model } from 'mongoose';
 import { DTOMPESA, MPESA, TransactionType, callBackUrl, consumerKey, consumerSecret, mpesaAccessTokenUrl, mpesaBusinessShortCode, mpesaQueueTimeOutUrl, mpesaResultUrl, mpesaReversalUrl, mpesaSTKPushUrl, mpesaTransactionStatusUrl, passKey, securityCredential } from '../../models/mpesa.model';
 
@@ -43,22 +42,13 @@ export class MPESAService {
     let dataToSend = JSON.stringify(transaction);
 
     let result = await unirest
-      .post(mpesaSTKPushUrl)
-      .headers({
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
-      })
-      .send(dataToSend);
-
-      // axios.post(mpesaSTKPushUrl, dataToSend, {headers: {
-      //   Accept: 'application/json',
-      //   'Content-Type': 'application/json',
-      //   Authorization: `Bearer ${accessToken}`,
-      // } }).then((response) => {
-      //   console.log(response)
-      // }).catch(error => console.log(error))
-
+    .post(mpesaSTKPushUrl)
+    .headers({
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessToken}`,
+    })
+    .send(dataToSend);
       
     let resultObject = JSON.parse(result.raw_body);
 
@@ -84,7 +74,7 @@ export class MPESAService {
     mpesaTransaction.customerMessage = resultObject.CustomerMessage;
 
     await mpesaTransaction.save();
-    return resultObject;
+    return mpesaTransaction._id;
   }
 
   async updateTransaction(update) {
@@ -104,6 +94,14 @@ export class MPESAService {
 
     await mpesaTransaction.save();
     console.log(mpesaTransaction);
+  }
+
+  async getTransaction(id){
+    return await this.mpesamodel.findById(id)
+  }
+
+  async getUserTransactions(){
+    return await this.mpesamodel.find()
   }
 
   async reversePayment(transactionID: string){

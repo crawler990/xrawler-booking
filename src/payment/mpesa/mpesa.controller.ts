@@ -1,4 +1,4 @@
-import { Body, Controller, HttpException, HttpStatus, Post, Req } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, Req } from '@nestjs/common';
 import { Request } from 'express';
 import { DTOMPESA } from '../../models/mpesa.model';
 import { MPESAService } from './mpesa.service';
@@ -9,6 +9,7 @@ export class MPESAController {
 
   @Post('processrequest')
   async makePayment(@Body() body: DTOMPESA) {
+    console.log(body)
     console.log('hit')
     if(!body.phoneNumber || !body.amount) throw new HttpException('Please provide the phone number and amount to be processed', HttpStatus.BAD_REQUEST);
     return await this.mpesaservice.processRequest(body);
@@ -47,5 +48,10 @@ export class MPESAController {
   async result(@Req() req: Request) {
     console.log('Result')
     console.log(req.body)
-;  }
+  }
+
+  @Get('gettransaction/:id')
+  async getTransaction(@Param('id')id){
+    return await this.mpesaservice.getTransaction(id)
+  }
 }
