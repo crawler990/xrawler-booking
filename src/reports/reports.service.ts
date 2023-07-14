@@ -163,7 +163,7 @@ export class ReportsService {
         <footer>&nbsp;</footer>
       </body>
     </html>
-        `;
+    `;
 
     await page.setContent(htmlContent);
     const pdf = await page.pdf({
