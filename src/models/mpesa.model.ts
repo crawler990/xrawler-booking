@@ -7,7 +7,7 @@ export enum TransactionType {
 }
 
 // const baseUrl = 'https://xrawler-booking.onrender.com'
-const baseUrl = 'https://xrawler-booking.onrender.com'
+const baseUrl = 'https://2bf2-197-237-171-99.ngrok-free.app'
 
 export const mpesaSTKPushUrl = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
 export const mpesaAccessTokenUrl = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials';
